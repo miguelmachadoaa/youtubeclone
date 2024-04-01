@@ -1,0 +1,8 @@
+<div class="card" >
+    <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="{{ video.snippet.title }}">
+    <div class="card-body p-1">
+      <h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5>
+      <p class="card-text mb-0">{{ video.snippet.channelTitle }} </p>
+      <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span>  </p>
+    </div>
+  </div>
