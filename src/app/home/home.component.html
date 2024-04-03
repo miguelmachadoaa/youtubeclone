@@ -1,40 +1,18 @@
-<div class="container">
-
-    <div class="row mt-4">
-
-        <div class="col-sm-2">
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-              Inicio
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">Videos que te Gustan</a>
-            <a href="#" class="list-group-item list-group-item-action">Videos Guardados</a>
-            <a routerLink="/channels" class="list-group-item list-group-item-action">Tus Canales</a>
-            <a href="#" class="list-group-item list-group-item-action">Tu cuenta</a>
-          </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                  <div class="input-group mb-3">
-                    <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
-                    <button (click)="search()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-                  </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-sm-4" *ngFor="let dato of data?.items">
-
-                  <app-video [video]="dato"></app-video>
-
-                  
-
-                </div>
-              </div>
-        </div>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="input-group mb-3">
+      <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
+      <button (click)="search()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
     </div>
+  </div>
+  
+</div>
+<div class="row">
+  <div class="col-sm-4 mb-4" *ngFor="let dato of data?.items">
+
+    <app-video [video]="dato"></app-video>
+
+  </div>
 </div>
 
-<router-outlet></router-outlet>

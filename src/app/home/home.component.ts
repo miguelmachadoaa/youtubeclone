@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../services/videos.service';
+import { LocalStorageService } from '../services/local-storage.service';
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
 import { VideoComponent } from '../video/video.component';
@@ -26,8 +27,11 @@ export class HomeComponent implements OnInit {
 
   data: any;
   term: any;
+  likes: any = [];
 
-  constructor(private videosService: VideosService) { }
+  constructor(
+    private videosService: VideosService,
+    private localStorageService:LocalStorageService) { }
 
   ngOnInit() {
     this.videosService.getData().then(response => {
@@ -44,6 +48,21 @@ export class HomeComponent implements OnInit {
     }).catch(error => {
       console.error(error);
     });
+  }
+
+  addToLike(item:any) {
+
+    this.localStorageService.setItem('likes', item);
+   // this.likes.push(item);
+    this.likes = this.localStorageService.getItem('likes');
+    console.log(this.likes);
+  }
+
+  delToLike(item:any, i:any) {
+
+    this.localStorageService.removeItem('likes', i);
+   // this.likes.push(item);
+    this.likes = this.localStorageService.getItem('likes');
   }
 
 

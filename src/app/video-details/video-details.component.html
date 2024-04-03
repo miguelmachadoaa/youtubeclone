@@ -1,0 +1,46 @@
+<div class="row">
+
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col"><youtube-player videoId="{{video.id}}"></youtube-player></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a (click)="getVideoData(video.id)"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
+                <p class="card-text mb-0">
+                    {{ video.snippet.channelTitle }}
+                    <button class="btn btn-link btn-xs mb-0">Suscribirte</button>
+                </p>
+                <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span>  <button (click)="addToLike(video)"  class="btn btn-link btn-xs mb-0">Like</button> </p>
+                <p>
+                    {{video.snippet.description}}
+                </p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-4">
+        <div class="row">
+            <div class="col-sm-12 mb-4" *ngFor="let dato of relatedVideos">
+
+                <div class="card" >
+                    <img src="{{dato.snippet.thumbnails.medium.url}}" class="card-img-top" alt="{{ dato.snippet.title }}">
+                    <div class="card-body p-1">
+                      <a (click)="getVideoData(dato.id.videoId)"><h5 class="card-title mb-1">{{ (dato.snippet.title.length>60)?dato.snippet.title.substr(0,60)+'...':dato.snippet.title }}</h5></a> 
+                      
+                      
+                      <p class="card-text mb-0">
+                        {{ dato.snippet.channelTitle }}
+                        <button class="btn btn-link btn-xs mb-0">Suscribirte</button>
+                      </p>
+                      <p class="card-text mb-0">{{ dato.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="dato.statistics"> - {{dato.statistics?.viewCount }} </span>  <button (click)="addToLike(video)"  class="btn btn-link btn-xs mb-0">Like</button> </p>
+                      
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>
+

@@ -31,5 +31,24 @@ export class VideosService {
     return data ?? null;
   }
 
+  searchById(id:string){
+
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${id}&type=video&key=${this.apikey}`;
+
+    let data = axios.get(url);
+    return data ?? null;
+  }
+
+  searchByCategory(id:string){
+
+    console.log('id');
+    console.log(id);
+
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&regionCode=VE&videoCategoryId=${id}&type=video&key=${this.apikey}`;
+
+    let data = axios.get(url);
+    return data ?? null;
+  }
+
 
 }
