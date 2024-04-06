@@ -1,7 +1,7 @@
 <div class="card" >
     <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="{{ video.snippet.title }}">
     <div class="card-body p-1">
-      <a [routerLink]="['/details', video.id]"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
+      <a [routerLink]="['/details', getVideoId(video)]"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
       
       
       <p class="card-text mb-0">

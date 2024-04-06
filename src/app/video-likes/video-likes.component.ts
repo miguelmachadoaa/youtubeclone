@@ -9,7 +9,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-video-likes',
   standalone: true,
   imports: [
     CommonModule, 
@@ -18,10 +18,10 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     CanalesComponent,
     RouterOutlet, RouterLink, RouterLinkActive
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './video-likes.component.html',
+  styleUrl: './video-likes.component.css'
 })
-export class HomeComponent implements OnInit {
+export class VideoLikesComponent implements OnInit {
 
   title = 'youtube';
 
@@ -34,11 +34,9 @@ export class HomeComponent implements OnInit {
     private localStorageService:LocalStorageService) { }
 
   ngOnInit() {
-    this.videosService.getData().then(response => {
-      this.data = response.data;
-    }).catch(error => {
-      console.error(error);
-    });
+    this.data = this.localStorageService.getItem('likes');
+
+    console.log(this.data);
   }
 
   search() {

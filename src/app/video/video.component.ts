@@ -37,4 +37,13 @@ export class VideoComponent {
     this.likes = this.localStorageService.getItem('likes');
   }
 
+  getVideoId(video:any){
+    if(video.id.videoId){
+      return video.id.videoId;
+    }else{
+      return video.id;
+    }
+  }
+
+
 }
