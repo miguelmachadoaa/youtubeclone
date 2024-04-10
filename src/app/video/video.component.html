@@ -1,14 +1,18 @@
 <div class="card" >
     <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="{{ video.snippet.title }}">
     <div class="card-body p-1">
-      <a [routerLink]="['/details', getVideoId(video)]"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
-      
-      
+      <div class="row p-0 m-0">
+        <div class="col-sm-2 ">
+          <img src="https://ui-avatars.com/api/?name={{ video.snippet.channelTitle }}&background=0D8ABC&color=fff&size=128" class="card-img-top rounded" alt="{{ video.snippet.channelTitle }}">
+        </div>
+        <div class="col-sm-10 p-0 m-0">
+          <a [routerLink]="['/details', getVideoId(video)]"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
+        </div>
+      </div>
+     
       <p class="card-text mb-0">
         {{ video.snippet.channelTitle }}
-        <button class="btn btn-link btn-xs mb-0">Suscribirte</button>
       </p>
-      <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span>  <button (click)="addToLike(video)"  class="btn btn-link btn-xs mb-0">Like</button> </p>
-      
+      <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span> 
     </div>
   </div>

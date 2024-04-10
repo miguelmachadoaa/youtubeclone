@@ -50,5 +50,17 @@ export class VideosService {
     return data ?? null;
   }
 
+  getChannelInfo(id:string){
+
+    console.log('id');
+    console.log(id);
+
+    let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${this.apikey}`;
+
+    let data = axios.get(url);
+    console.log(data);
+    return data ?? null;
+  }
+
 
 }

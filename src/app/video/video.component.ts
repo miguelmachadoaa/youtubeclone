@@ -45,5 +45,17 @@ export class VideoComponent {
     }
   }
 
+  getChannelImage(video:any){
+    let channel:any;
+
+    /*this.videosService.getChannelInfo(video.snippet.channelId).then(response => {
+      channel = response.data;
+    }).catch(error => {
+      console.error(error);
+    });*/
+    console.log(channel);
+    return channel.items[0].snippet.thumbnails.medium??null;
+  }
+
 
 }
