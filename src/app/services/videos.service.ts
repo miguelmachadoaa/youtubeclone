@@ -8,7 +8,8 @@ export class VideosService {
 
   private apiUrl = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VE&maxResults=24&key=AIzaSyCVlTAocC8MYZ22O27KTGJp5z3LgD5r9V4';
 
-  private apikey= 'AIzaSyCVlTAocC8MYZ22O27KTGJp5z3LgD5r9V4';
+  //private apikey= 'AIzaSyCVlTAocC8MYZ22O27KTGJp5z3LgD5r9V4';
+  private apikey = 'AIzaSyCCp1XlHaOvlZrqp3f09lZCsTUolzVUxwU';  //my first project 
 
   constructor() { }
 
@@ -44,7 +45,18 @@ export class VideosService {
     console.log('id');
     console.log(id);
 
-    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&regionCode=VE&videoCategoryId=${id}&type=video&key=${this.apikey}`;
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&chart=mostPopular&regionCode=VE&videoCategoryId=${id}&type=video&key=${this.apikey}`;
+
+    let data = axios.get(url);
+    return data ?? null;
+  }
+
+  searchByChannel(id:string){
+
+    console.log('id');
+    console.log(id);
+
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&channelId=${id}&type=video&key=${this.apikey}`;
 
     let data = axios.get(url);
     return data ?? null;
@@ -55,7 +67,7 @@ export class VideosService {
     console.log('id');
     console.log(id);
 
-    let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${this.apikey}`;
+    let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${id}&key=${this.apikey}`;
 
     let data = axios.get(url);
     console.log(data);

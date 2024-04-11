@@ -11,7 +11,7 @@
       </div>
      
       <p class="card-text mb-0">
-        {{ video.snippet.channelTitle }}
+        <a class="channelLink" [routerLink]="['/channel', video.snippet.channelId ]"><h6 class="card-title mb-1">{{video.snippet.channelTitle}} </h6></a> 
       </p>
       <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span> 
     </div>

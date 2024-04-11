@@ -1,1 +1,28 @@
-<p>canales works!</p>
+
+<div class="row">
+    <div class="col-sm-3">
+        <img src="{{channel.snippet.thumbnails.medium.url}}" class="card-img-top rounded-circle" alt="{{channel.snippet.title}}">
+    </div>
+    <div class="col-sm-9">
+        <h3>{{channel.snippet.title}}</h3>
+        <p>{{channel.snippet.description}}</p>
+
+        <p>Total Seguidores: {{channel.statistics.subscriberCount}}</p>
+        <p>Total Videos: {{channel.statistics.videoCount}}</p>
+        <p>Total Views: {{channel.statistics.viewCount}}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h3>Videos</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 mb-4" *ngFor="let dato of videos">
+  
+      <app-video [video]="dato"></app-video>
+  
+    </div>
+  </div>

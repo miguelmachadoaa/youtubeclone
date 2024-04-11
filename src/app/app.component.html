@@ -1,37 +1,70 @@
 <main class="main">
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <span class="fs-5 d-none d-sm-inline">Menu</span>
+              </a>
+              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                  <!-- Menu items -->
+                  <!-- Example: Home -->
+                  <li class="nav-item">
+                      <a href="#" class="nav-link align-middle px-0">
+                          <i class="fs-4 bi-house"></i>
+                          <span class="ms-1 d-none d-sm-inline">Home</span>
+                      </a>
+                  </li>
+                  <!-- Example: Dashboard with submenus -->
+                  <li>
+                      <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-speedometer2"></i>
+                          <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                      </a>
+                      <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                          <li class="w-100">
+                              <a routerLink="/likes" class="nav-link px-0">
+                                  <span class="d-none d-sm-inline">Likes</span>
+                              </a>
+                          </li>
+                          <li>
+                              <a href="/history" class="nav-link px-0">
+                                  <span class="d-none d-sm-inline">History</span>
+                              </a>
+                          </li>
 
-  <div class="container">
+                          <li>
+                            <a href="/channels" class="nav-link px-0">
+                                <span class="d-none d-sm-inline">Channels</span>
+                            </a>
+                        </li>
 
-    <div class="row mt-4">
 
-        <div class="col-sm-2">
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-              Inicio
-            </a>
-            <a routerLink="/likes"  class="list-group-item list-group-item-action">Videos que te Gustan</a>
-            <a href="#" class="list-group-item list-group-item-action">Videos Guardados</a>
-            <a routerLink="/channels" class="list-group-item list-group-item-action">Tus Canales</a>
-            <a href="#" class="list-group-item list-group-item-action">Tu cuenta</a>
+                      </ul>
+                  </li>
+                  <!-- Other menu items -->
+                  <!-- ... -->
+              </ul>
+              <!-- User profile dropdown -->
+              <!-- ... -->
           </div>
-        </div>
-        <div class="col-sm-10">
+      </div>
+      <div class="col py-3">
 
-          <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-              <div class="input-group mb-3">
-                <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
-                <button (click)="search()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-              </div>
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <div class="input-group mb-3">
+              <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
+              <button (click)="search()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
             </div>
-            
           </div>
-
           
-          <router-outlet></router-outlet>
         </div>
-    </div>
+
+        <router-outlet></router-outlet>
+      </div>
+  </div>
 </div>
 
 
