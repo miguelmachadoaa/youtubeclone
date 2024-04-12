@@ -2,17 +2,45 @@
 
     <div class="col-sm-8">
         <div class="row">
-            <div class="col"><youtube-player videoId="{{video.id}}"></youtube-player></div>
+            <div class="col"><youtube-player style="width: 1005;" videoId="{{video.id}}"></youtube-player></div>
         </div>
-        <div class="row">
+        <div class="row mb-2">
             <div class="col">
                 <a (click)="getVideoData(video.id)"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
-                <p class="card-text mb-0">
-                    {{ video.snippet.channelTitle }}
-                    <button class="btn btn-link btn-xs mb-0">Suscribirte</button>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1">
+                    <img src="{{channel.snippet.thumbnails.medium.url}}" 
+                    class="card-img-top rounded-circle" 
+                    alt="{{channel.snippet.title}}"
+                    >
+               
+            </div>
+            <div class="col-4">
+                <p class="p-0 m-0">
+                    {{ video.snippet.channelTitle }} 
+                    
+                </p>   
+                <p class="p-0 m-0" style="font-size: 0.8em; color: #747171;">
+                    {{channel.statistics.subscriberCount}} de suscriptores
                 </p>
-                <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span>  <button (click)="addToLike(video)"  class="btn btn-link btn-xs mb-0">Like</button> </p>
-                <p>
+            </div>
+
+            <div class="col-4">
+                <button class="btn btn-primary btn-xs  ">Suscribirte</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-danger btn-xs  ">Like</button>
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                 <p style="font-size: 0.8em; color: #747171;">
                     {{video.snippet.description}}
                 </p>
             </div>
@@ -27,14 +55,9 @@
                     <img src="{{dato.snippet.thumbnails.medium.url}}" class="card-img-top" alt="{{ dato.snippet.title }}">
                     <div class="card-body p-1">
                       <a (click)="getVideoData(dato.id.videoId)"><h5 class="card-title mb-1">{{ (dato.snippet.title.length>60)?dato.snippet.title.substr(0,60)+'...':dato.snippet.title }}</h5></a> 
-                      
-                      
-                      <p class="card-text mb-0">
+                      <p class="card-text mb-0 p-0">
                         {{ dato.snippet.channelTitle }}
-                        <button class="btn btn-link btn-xs mb-0">Suscribirte</button>
                       </p>
-                      <p class="card-text mb-0">{{ dato.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="dato.statistics"> - {{dato.statistics?.viewCount }} </span>  <button (click)="addToLike(video)"  class="btn btn-link btn-xs mb-0">Like</button> </p>
-                      
                     </div>
                   </div>
 

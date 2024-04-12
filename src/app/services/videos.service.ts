@@ -31,6 +31,18 @@ export class VideosService {
     console.log(data);
     return data ?? null;
   }
+  getVideoRelated(term:string){
+
+    
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=${encodeURIComponent(term)}&type=video&key=${this.apikey}`;
+
+    console.log(url);
+
+    let data = axios.get(url);
+    console.log('search');
+    console.log(data);
+    return data ?? null;
+  }
 
   searchById(id:string){
 

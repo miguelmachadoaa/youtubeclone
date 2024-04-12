@@ -24,6 +24,7 @@ export class VideoDetailsComponent implements OnInit {
   @Input() videoId: any;
 
   video : any;
+  channel : any;
   relatedVideos : any;
   likes: any = [];
 
@@ -40,12 +41,23 @@ export class VideoDetailsComponent implements OnInit {
 
     this.videosService.searchById(videoId).then(response => {
       this.video = response.data.items[0];
+      console.log(this.video);
 
       this.localStorageService.setItem('views', this.video);
 
-      this.videosService.searchByCategory(this.video.snippet.categoryId).then(response => {
+      let term = this.video.snippet.title.replace(' ', '|');
+
+      this.videosService.getVideoRelated(term).then(response => {
         this.relatedVideos = response.data.items;
         console.log(this.relatedVideos);
+      }).catch(error => {
+        console.error(error);
+      });
+
+      this.videosService.getChannelInfo(this.video.snippet.channelId).then(response => {
+        this.channel = response.data.items[0];
+        console.log(this.channel);
+  
       }).catch(error => {
         console.error(error);
       });
@@ -67,9 +79,10 @@ export class VideoDetailsComponent implements OnInit {
   delToLike(item:any, i:any) {
 
     this.localStorageService.removeItem('likes', i);
-   // this.likes.push(item);
     this.likes = this.localStorageService.getItem('likes');
   }
+
+
 
 
 
