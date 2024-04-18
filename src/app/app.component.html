@@ -29,15 +29,17 @@
                                   <span class="d-none d-sm-inline">History</span>
                               </a>
                           </li>
-
-                          <li>
-                            <a href="/channels" class="nav-link px-0">
-                                <span class="d-none d-sm-inline">Channels</span>
+                      </ul>
+                  </li>
+                  <li>
+                    <p>Suscripciones</p>
+                    <ul>
+                        <li *ngFor="let channel of channels">
+                            <a routerLink="/channel/{{channel.id}}" class="nav-link px-0">
+                                <span class="d-none d-sm-inline">{{channel.snippet.title}}</span>
                             </a>
                         </li>
-
-
-                      </ul>
+                    </ul>
                   </li>
                   <!-- Other menu items -->
                   <!-- ... -->

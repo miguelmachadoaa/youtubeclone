@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { VideosService } from './services/videos.service';
 import { LocalStorageService } from './services/local-storage.service';
@@ -13,13 +13,14 @@ import { HomeComponent } from './home/home.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'youtube';
 
   data: any;
   term: any;
   likes: any = [];
+  channels: any = [];
 
   constructor(
     private videosService: VideosService, 
@@ -28,18 +29,20 @@ export class AppComponent {
 
   ) { }
 
+  ngOnInit() {
+   
+   this.channels = this.localStorageService.getItem('channels');
+
+   let hash:any = {};
+
+   this.channels = this.channels.filter((o: { id: string | number; }) => hash[o.id] ? false : hash[o.id] = true);
+    
+  }
+
   search() {
     let url = "/search";
 
-    console.log(url);
-
     this.router.navigate([url], { queryParams: {q:this.term}});
-
-    /*this.videosService.getDataSearch(this.term).then(response => {
-      this.data = response.data;
-    }).catch(error => {
-      console.error(error);
-    });*/
   }
 
   

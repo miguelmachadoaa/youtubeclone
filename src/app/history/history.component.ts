@@ -36,6 +36,8 @@ export class HistoryComponent implements OnInit {
   ngOnInit() {
     this.data = this.localStorageService.getItem('views');
 
+    let hash:any = {};
+    this.data = this.data.filter((o: { id: string | number; }) => hash[o.id] ? false : hash[o.id] = true);
     console.log(this.data);
   }
 

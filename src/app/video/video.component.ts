@@ -1,5 +1,4 @@
 import { Component, OnInit, Input  } from '@angular/core';
-import { VideosService } from '../services/videos.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
@@ -16,7 +15,6 @@ import { VideoDetailsComponent } from '../video-details/video-details.component'
 export class VideoComponent {
 
   constructor(
-    private videosService: VideosService,
     private localStorageService : LocalStorageService) { }
 
   @Input() video: any;
@@ -25,7 +23,6 @@ export class VideoComponent {
   addToLike(item:any) {
 
     this.localStorageService.setItem('likes', item);
-   // this.likes.push(item);
     this.likes = this.localStorageService.getItem('likes');
     console.log(this.likes);
   }
@@ -33,7 +30,6 @@ export class VideoComponent {
   delToLike(item:any, i:any) {
 
     this.localStorageService.removeItem('likes', i);
-   // this.likes.push(item);
     this.likes = this.localStorageService.getItem('likes');
   }
 
