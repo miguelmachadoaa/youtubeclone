@@ -23,6 +23,10 @@ export class VideoDetailsComponent implements OnInit {
 
   @Input() videoId: any;
 
+  playerConfig = {
+    autoplay: 1
+  };
+
   video : any;
   channel : any;
   relatedVideos : any;
@@ -83,7 +87,14 @@ export class VideoDetailsComponent implements OnInit {
     console.log(e, 'its ready')
   }
 
- 
+  stateChange(e:any): void {
+    console.log(e.data);
+    console.log(e, 'stateChange');
+
+    if(e.data==0){
+      this.getVideoData(this.relatedVideos[1].id.videoId)
+    }
+  }
 
 
 }
