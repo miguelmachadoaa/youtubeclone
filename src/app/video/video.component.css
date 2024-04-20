@@ -11,3 +11,20 @@ a{
     color: #666;
 
 }
+
+.card-body{
+    background: #121212;
+    color: #fff
+}
+
+.card-text{
+    color: #fff;
+}
+
+.card-title{
+    color: #fff;
+}
+
+.card{
+    border: none;
+}

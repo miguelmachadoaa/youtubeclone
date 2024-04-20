@@ -3,7 +3,9 @@
     <div class="col-sm-8">
         <div class="row">
             <div class="col">
-                <youtube-player style="width: 1005;" 
+                <youtube-player style="width: 100%;" 
+                [playerVars]="playerConfig"
+                width="100%"
                 videoId="{{video.id}}"
                 (ready)="onReady($event)"
                 (stateChange)="stateChange($event)"

@@ -1,0 +1,34 @@
+a, a:hover{
+    color:#fff;
+}
+li{
+    text-decoration: none;
+    list-style: none;
+}
+ul{
+    padding: 0;
+}
+.menu-icon{
+    margin-right: 1em;
+}
+
+.channel-img-list{
+    width: 32px;
+    border-radius: 1em;
+}
+
+.contenido{
+    background-color: #121212;
+}
+
+.btn-search{
+    background-color: #212121;
+    width: 4em;
+}
+
+.input-search{
+    background-color: #121212;
+    color: #fff;
+    border-radius: 0;
+    border: 1px solid #313131;
+}

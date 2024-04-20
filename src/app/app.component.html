@@ -4,15 +4,17 @@
       <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
               <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                  <span class="fs-5 d-none d-sm-inline">Menu</span>
+                  <span class="fs-5 d-none d-sm-inline">
+                    <img src="assets/youtubeLogo.png" alt="">
+                  </span>
               </a>
               <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                   <!-- Menu items -->
                   <!-- Example: Home -->
                   <li class="nav-item">
                       <a href="#" class="nav-link align-middle px-0">
-                          <i class="fs-4 bi-house"></i>
-                          <span class="ms-1 d-none d-sm-inline">Home</span>
+                          <img class="menu-icon " src="assets/home.png" alt="">
+                          <span class="ms-1 d-none d-sm-inline mr-2">Home</span>
                       </a>
                   </li>
                   <!-- Example: Dashboard with submenus -->
@@ -21,21 +23,25 @@
                       <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                           <li class="w-100">
                               <a routerLink="/likes" class="nav-link px-0">
-                                  <span class="d-none d-sm-inline">Likes</span>
+                                <img class="menu-icon mr-2" src="assets/likes.png" alt="">
+                                  <span class=" d-sm-inline">
+                                    Likes</span>
                               </a>
                           </li>
                           <li>
                               <a href="/history" class="nav-link px-0">
-                                  <span class="d-none d-sm-inline">History</span>
+                                <img class=" menu-icon mr-2" src="assets/likes.png" alt="">
+                                  <span class=" d-sm-inline">History</span>
                               </a>
                           </li>
                       </ul>
                   </li>
                   <li>
-                    <p>Suscripciones</p>
+                    <p><img class="menu-icon" src="assets/suscription.png" alt=""> Suscripciones</p>
                     <ul>
                         <li *ngFor="let channel of channels">
                             <a routerLink="/channel/{{channel.id}}" class="nav-link px-0">
+                                <img class="menu-icon channel-img-list" src="{{channel.snippet.thumbnails.medium.url}}"  alt="">
                                 <span class="d-none d-sm-inline">{{channel.snippet.title}}</span>
                             </a>
                         </li>
@@ -48,14 +54,14 @@
               <!-- ... -->
           </div>
       </div>
-      <div class="col py-3">
+      <div class="col py-3 contenido">
 
         <div class="row">
           <div class="col-sm-2"></div>
           <div class="col-sm-8">
             <div class="input-group mb-3">
-              <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
-              <button (click)="search()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+              <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control input-search" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
+              <button (click)="search()" class="btn btn-outline-secondary btn-search" type="button" id="button-addon2"><img src="assets/search.png" alt=""></button>
             </div>
           </div>
           

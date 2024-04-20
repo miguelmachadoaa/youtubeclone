@@ -1,0 +1,30 @@
+a{
+    text-decoration: none;
+}
+
+.card-title{
+    color:#333;
+}
+
+.channelLink{
+    font-size: 0.7em;
+    color: #666;
+
+}
+
+.card-body{
+    background: #121212;
+    color: #fff
+}
+
+.card-text{
+    color: #fff;
+}
+
+.card-title{
+    color: #fff;
+}
+
+.card{
+    border: none;
+}
