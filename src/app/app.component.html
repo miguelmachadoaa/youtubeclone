@@ -24,20 +24,20 @@
                           <li class="w-100">
                               <a routerLink="/likes" class="nav-link px-0">
                                 <img class="menu-icon mr-2" src="assets/likes.png" alt="">
-                                  <span class=" d-sm-inline">
+                                  <span class=" d-none d-sm-inline">
                                     Likes</span>
                               </a>
                           </li>
                           <li>
                               <a href="/history" class="nav-link px-0">
                                 <img class=" menu-icon mr-2" src="assets/likes.png" alt="">
-                                  <span class=" d-sm-inline">History</span>
+                                  <span class="d-none d-sm-inline">History</span>
                               </a>
                           </li>
                       </ul>
                   </li>
                   <li>
-                    <p><img class="menu-icon" src="assets/suscription.png" alt=""> Suscripciones</p>
+                    <p><img class="menu-icon" src="assets/suscription.png" alt=""> <span class="d-none d-sm-inline">Suscripciones</span></p>
                     <ul>
                         <li *ngFor="let channel of channels">
                             <a routerLink="/channel/{{channel.id}}" class="nav-link px-0">

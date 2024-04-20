@@ -32,11 +32,13 @@ export class VideoDetailsComponent implements OnInit {
   relatedVideos : any;
   likes: any = [];
 
+  videoWidth: number | undefined;
+
 
   ngOnInit() {
 
     this.videoId = this.router.url.split('/')[2];
-
+    this.videoWidth = window.innerWidth*0.8;
     this.getVideoData(this.videoId);
 
   }

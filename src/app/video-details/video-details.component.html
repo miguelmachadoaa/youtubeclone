@@ -1,11 +1,11 @@
 <div class="row">
 
-    <div class="col-sm-8">
+    <div class="col-sm-8 col-xs-12">
         <div class="row">
-            <div class="col">
-                <youtube-player style="width: 100%;" 
+            <div class="col-12">
+                <youtube-player style="width: 100% !important;" 
                 [playerVars]="playerConfig"
-                width="100%"
+                [width]="videoWidth"
                 videoId="{{video.id}}"
                 (ready)="onReady($event)"
                 (stateChange)="stateChange($event)"
@@ -54,7 +54,7 @@
         </div>
         
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-xs-12">
         <div class="row">
             <div class="col-sm-12 mb-4" *ngFor="let dato of relatedVideos">
 

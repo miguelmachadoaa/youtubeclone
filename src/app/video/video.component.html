@@ -2,10 +2,10 @@
     <img src="{{video.snippet.thumbnails.medium.url}}" class="card-img-top" alt="{{ video.snippet.title }}">
     <div class="card-body p-1">
       <div class="row p-0 m-0">
-        <div class="col-sm-2 ">
+        <div class="col-sm-2 col-2 ">
           <img src="https://ui-avatars.com/api/?name={{ video.snippet.channelTitle }}&background=0D8ABC&color=fff&size=128" class="card-img-top rounded" alt="{{ video.snippet.channelTitle }}">
         </div>
-        <div class="col-sm-10 p-0 m-0">
+        <div class="col-sm-10  col-10 p-0 m-0">
           <a [routerLink]="['/details', getVideoId(video)]"><h5 class="card-title mb-1">{{ (video.snippet.title.length>60)?video.snippet.title.substr(0,60)+'...':video.snippet.title }}</h5></a> 
           <a class="channelLink" [routerLink]="['/channel', video.snippet.channelId ]"><h6 class="card-title mb-1">{{video.snippet.channelTitle}} </h6></a> 
           <p class="card-text mb-0">{{ video.snippet.publishedAt | date:'dd/MM/yyyy' }} <span  *if="video.statistics"> - {{video.statistics?.viewCount }} </span> 
