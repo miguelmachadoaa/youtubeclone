@@ -28,3 +28,7 @@ a{
 .card{
     border: none;
 }
+
+iframe{
+    width: 100%;
+}

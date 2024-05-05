@@ -32,3 +32,7 @@ ul{
     border-radius: 0;
     border: 1px solid #313131;
 }
+
+body{
+    background: #121212 !important;
+}

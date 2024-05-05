@@ -5,11 +5,12 @@ import { LocalStorageService } from './services/local-storage.service';
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, HomeComponent, RouterLink, RouterLinkActive, FormsModule],
+  imports: [RouterOutlet, CommonModule, HomeComponent, RouterLink, RouterLinkActive, FormsModule, NgbModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

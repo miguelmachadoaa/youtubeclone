@@ -1,75 +1,74 @@
 <main class="main">
-<div class="container-fluid">
-  <div class="row flex-nowrap">
-      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                  <span class="fs-5 d-none d-sm-inline">
-                    <img src="assets/youtubeLogo.png" alt="">
-                  </span>
+
+  <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="assets/youtubeLogo.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">
+              <img class="menu-icon " src="assets/home.png" alt="">
+              <span class="ms-1 text-white  mr-2">Home</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/likes">
+              <img class="menu-icon " src="assets/home.png" alt="">
+              <span class="ms-1 text-white  mr-2">Likes</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">
+              <img class="menu-icon " src="assets/likes.png" alt="">
+              <span class="ms-1 text-white  mr-2">History</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/channel">
+              <img class="menu-icon " src="assets/likes.png" alt="">
+              <span class="ms-1 text-white d-sm-inline mr-2">Canales</span>
+            </a>
+          </li>
+
+          <li *ngFor="let channel of channels">
+              <a routerLink="/channel/{{channel.id}}" class="nav-link px-0">
+                  <img class="menu-icon channel-img-list" src="{{channel.snippet.thumbnails.medium.url}}"  alt="">
+                  <span class="text-white d-sm-inline">{{channel.snippet.title}}</span>
               </a>
-              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                  <!-- Menu items -->
-                  <!-- Example: Home -->
-                  <li class="nav-item">
-                      <a href="#" class="nav-link align-middle px-0">
-                          <img class="menu-icon " src="assets/home.png" alt="">
-                          <span class="ms-1 d-none d-sm-inline mr-2">Home</span>
-                      </a>
-                  </li>
-                  <!-- Example: Dashboard with submenus -->
-                  <li>
-                     
-                      <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                          <li class="w-100">
-                              <a routerLink="/likes" class="nav-link px-0">
-                                <img class="menu-icon mr-2" src="assets/likes.png" alt="">
-                                  <span class=" d-none d-sm-inline">
-                                    Likes</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="/history" class="nav-link px-0">
-                                <img class=" menu-icon mr-2" src="assets/likes.png" alt="">
-                                  <span class="d-none d-sm-inline">History</span>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                    <p><img class="menu-icon" src="assets/suscription.png" alt=""> <span class="d-none d-sm-inline">Suscripciones</span></p>
-                    <ul>
-                        <li *ngFor="let channel of channels">
-                            <a routerLink="/channel/{{channel.id}}" class="nav-link px-0">
-                                <img class="menu-icon channel-img-list" src="{{channel.snippet.thumbnails.medium.url}}"  alt="">
-                                <span class="d-none d-sm-inline">{{channel.snippet.title}}</span>
-                            </a>
-                        </li>
-                    </ul>
-                  </li>
-                  <!-- Other menu items -->
-                  <!-- ... -->
-              </ul>
-              <!-- User profile dropdown -->
-              <!-- ... -->
-          </div>
+          </li>
+        </ul>
+        
       </div>
-      <div class="col py-3 contenido">
+    </div>
+  </nav>
 
-        <div class="row">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-8">
-            <div class="input-group mb-3">
-              <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control input-search" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
-              <button (click)="search()" class="btn btn-outline-secondary btn-search" type="button" id="button-addon2"><img src="assets/search.png" alt=""></button>
-            </div>
-          </div>
-          
-        </div>
 
-        <router-outlet></router-outlet>
+<div class="container-fluid">
+
+  
+  <div class="row my-2">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="term" (keyup.enter)="search()" class="form-control input-search" placeholder="Search Video " aria-label="Search Video" aria-describedby="button-addon2">
+        <button (click)="search()" class="btn btn-outline-secondary btn-search" type="button" id="button-addon2"><img src="assets/search.png" alt=""></button>
       </div>
+    </div>
+    
   </div>
+
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+ 
 </div>
 
 
