@@ -26,21 +26,18 @@
                     >
                
             </div>
-            <div class="col-4">
+            <div class="col-9">
                 <p class="p-0 m-0">
                     {{ video.snippet.channelTitle }} 
                     
                 </p>   
                 <p class="p-0 m-0" style="font-size: 0.8em; color: #747171;">
-                    {{channel.statistics.subscriberCount}} de suscriptores
+                    {{formatNumber(channel.statistics.subscriberCount)}} Subscriptores
                 </p>
             </div>
-
-            <div class="col-4">
-                <button class="btn btn-primary btn-xs  ">Suscribirte</button>
-            </div>
+           
             <div class="col-3">
-                <button class="btn btn-danger btn-xs  ">Like</button>
+                <button (click)="addToLike(video)" class="btn btn-danger btn-xs  ">Like</button>
             </div>
 
         </div>
