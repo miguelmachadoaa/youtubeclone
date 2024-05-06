@@ -31,18 +31,19 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/channel">
+          <li class="nav-item dropdown bg-dark text-white">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img class="menu-icon " src="assets/likes.png" alt="">
               <span class="ms-1 text-white d-sm-inline mr-2">Canales</span>
             </a>
-          </li>
-
-          <li *ngFor="let channel of channels">
-              <a routerLink="/channel/{{channel.id}}" class="nav-link px-0">
-                  <img class="menu-icon channel-img-list" src="{{channel.snippet.thumbnails.medium.url}}"  alt="">
-                  <span class="text-white d-sm-inline">{{channel.snippet.title}}</span>
-              </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <li *ngFor="let channel of channels">
+                  <a class="dropdown-item" routerLink="/channel/{{channel.id}}"  >
+                      <img class="menu-icon channel-img-list" src="{{channel.snippet.thumbnails.medium.url}}"  alt="">
+                      <span class="text-white d-sm-inline">{{channel.snippet.title}}</span>
+                  </a>
+              </li>
+            </ul>
           </li>
         </ul>
         

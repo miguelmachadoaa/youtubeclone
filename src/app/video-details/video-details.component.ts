@@ -38,7 +38,7 @@ export class VideoDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.videoId = this.router.url.split('/')[2];
-    this.videoWidth = window.innerWidth*0.8;
+    this.videoWidth = window.innerWidth*0.98;
     this.getVideoData(this.videoId);
 
   }
