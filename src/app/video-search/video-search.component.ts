@@ -52,9 +52,9 @@ export class VideoSearchComponent implements OnInit {
   
       }else{
   
-        this.videosService.getData().then(response => {
+        this.videosService.getData().then((response: { data: any; }) => {
           this.data = response.data;
-        }).catch(error => {
+        }).catch((error: any) => {
           console.error(error);
         });
   
