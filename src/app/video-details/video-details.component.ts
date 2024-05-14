@@ -38,36 +38,74 @@ export class VideoDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.videoId = this.router.url.split('/')[2];
-    this.videoWidth = window.innerWidth*0.8;
+    this.videoWidth = window.innerWidth*0.98;
     this.getVideoData(this.videoId);
 
   }
 
+  formatNumber(num:any) {
+    if (num >= 1000000000) {
+      return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+    }
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    }
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    }
+    return num;
+  }
+
   getVideoData(videoId:any){
 
-    this.videosService.searchById(videoId).then(response => {
-      this.video = response.data.items[0];
 
-      this.localStorageService.setItem('views', this.video);
+    this.video = this.localStorageService.getItem(videoId);
 
-      let term = this.video.snippet.title.replace(' ', '|');
+    console.log(this.video);
 
-      this.videosService.getVideoRelated(term).then(response => {
-        this.relatedVideos = response.data.items;
-      }).catch(error => {
-        console.error(error);
-      });
+    if(!this.video){
 
-      this.videosService.getChannelInfo(this.video.snippet.channelId).then(response => {
-        this.channel = response.data.items[0];
+      this.videosService.searchById(videoId).then(response => {
+
+        this.video = response.data.items[0];
+  
+        this.localStorageService.setItem('views', this.video);
+        this.localStorageService.setItem(videoId, this.video);
+  
+        let term = this.video.snippet.title.replace(' ', '|');
+  
+        this.videosService.getVideoRelated(term).then(response => {
+          this.relatedVideos = response.data.items;
+          this.localStorageService.setItem(videoId+'Related', this.relatedVideos);
+
+        }).catch(error => {
+          console.error(error);
+        });
+  
+        this.videosService.getChannelInfo(this.video.snippet.channelId).then(response => {
+          this.channel = response.data.items[0];
+          this.localStorageService.setItem(this.video.snippet.channelId, this.video);
+    
+        }).catch(error => {
+          console.error(error);
+        });
   
       }).catch(error => {
         console.error(error);
       });
 
-    }).catch(error => {
-      console.error(error);
-    });
+
+    }else{
+      
+      this.video= this.video[0];
+      this.channel = this.localStorageService.getItem(this.video.snippet.channelId); 
+      this.channel = this.channel[0];
+      this.relatedVideos = this.localStorageService.getItem(this.video.id+'Related');
+      this.relatedVideos = this.relatedVideos[0];
+
+    }
+
+    
 
   }
 

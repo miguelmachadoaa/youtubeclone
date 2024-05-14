@@ -7,9 +7,9 @@
         <h3>{{channel.snippet.title}}</h3>
         <p>{{channel.snippet.description}}</p>
 
-        <p>Total Seguidores: {{channel.statistics.subscriberCount}}</p>
-        <p>Total Videos: {{channel.statistics.videoCount}}</p>
-        <p>Total Views: {{channel.statistics.viewCount}}</p>
+        <p>Total Seguidores: {{formatNumber(channel.statistics.subscriberCount)}}</p>
+        <p>Total Videos: {{formatNumber(channel.statistics.videoCount)}}</p>
+        <p>Total Views: {{formatNumber(channel.statistics.viewCount)}}</p>
     </div>
 </div>
 

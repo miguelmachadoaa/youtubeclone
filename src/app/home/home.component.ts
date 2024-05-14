@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { VideoComponent } from '../video/video.component';
 import { CanalesComponent } from '../canales/canales.component';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -25,20 +26,39 @@ export class HomeComponent implements OnInit {
 
   title = 'youtube';
 
+  today:any;
   data: any;
   term: any;
   likes: any = [];
 
+  pipe = new DatePipe('en-US');
+
   constructor(
+   
     private videosService: VideosService,
     private localStorageService:LocalStorageService) { }
 
   ngOnInit() {
-    this.videosService.getData().then(response => {
-      this.data = response.data;
-    }).catch(error => {
-      console.error(error);
-    });
+
+    this.today = this.pipe.transform(new Date(), 'ddMMYYYY');
+
+    this.data = this.localStorageService.getItem('home'+this.today);
+
+    if(!this.data){
+
+      this.videosService.getData().then((response: { data: any; }) => {
+        this.data = response.data;
+        this.localStorageService.setItem('home'+this.pipe.transform(this.today, 'ddMMYYYY'), this.data);
+      }).catch((error: any) => {
+        console.error(error);
+      });
+
+    }else{
+      this.data = this.data[0];
+    }
+
+
+    
   }
 
   search() {
@@ -71,6 +91,19 @@ export class HomeComponent implements OnInit {
     }else{
       return video.id;
     }
+  }
+
+  formatNumber(num:any) {
+    if (num >= 1000000000) {
+      return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+    }
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    }
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    }
+    return num;
   }
 
 
