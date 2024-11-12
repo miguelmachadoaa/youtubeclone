@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   data: any;
   term: any;
   likes: any = [];
+  userProfile: any;
 
   pipe = new DatePipe('en-US');
 
@@ -39,6 +40,8 @@ export class HomeComponent implements OnInit {
     private localStorageService:LocalStorageService) { }
 
   ngOnInit() {
+
+    this.userProfile = JSON.parse(sessionStorage.getItem("loggedInUser") || "");
 
     this.today = this.pipe.transform(new Date(), 'ddMMYYYY');
 
