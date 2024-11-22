@@ -36,12 +36,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
    
-    private videosService: VideosService,
-    private localStorageService:LocalStorageService) { }
+    private readonly videosService: VideosService,
+    private readonly localStorageService:LocalStorageService) { }
 
   ngOnInit() {
 
-    this.userProfile = JSON.parse(sessionStorage.getItem("loggedInUser") || "");
+    this.userProfile = JSON.parse(sessionStorage.getItem("loggedInUser")??"");
 
     this.today = this.pipe.transform(new Date(), 'ddMMYYYY');
 

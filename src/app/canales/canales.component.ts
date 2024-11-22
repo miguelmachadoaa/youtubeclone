@@ -26,7 +26,6 @@ export class CanalesComponent {
     likes: any = [];
     videos: any = [];
 
-
     ngOnInit() {
 
       this.channelId = this.router.url.split('/')[2];

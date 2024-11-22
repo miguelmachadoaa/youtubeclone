@@ -16,5 +16,5 @@ export const routes: Routes = [
     { path: 'history', component: HistoryComponent },
     { path: 'login', component: LoginComponent },
     { path: 'details/:id', component: VideoDetailsComponent },
-    { path: '',   redirectTo: 'home', pathMatch: 'full' },
+    { path: '',   redirectTo: 'login', pathMatch: 'full' },
 ];

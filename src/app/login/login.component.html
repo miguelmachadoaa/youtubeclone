@@ -3,18 +3,8 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
         <form (ngSubmit)="onSubmit()">
-            <div>
-              <label for="email">Email:</label>
-              <input class="form-control" type="email" id="email"   name="email" required>
-            </div>
-            <div>
-              <label for="password">Password:</label>
-              <input class="form-control" type="password" id="password"  name="password" required>
-            </div>
-            <button class="btn btn-primary mt-4" type="submit">Login</button>
-
-            <hr>
-
+            
+            <h3>Inicio session y crea tu cuenta</h3>
             
             <div id="g_id_onload"
               data-client_id="18203822512-st78qkth7ubu9hf58a3mhp24ljai8k9i.apps.googleusercontent.com"
@@ -34,6 +24,8 @@
           </div>
 
           </form>
+
+          <div class="btn btn-primary mt-4 w-100" (click)="youtubeAuth()" >Accede Con youtube</div>
           
     </div>
 </div>
