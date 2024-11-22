@@ -40,7 +40,7 @@ export class LoginComponent {
 
       // Parameters to pass to OAuth 2.0 endpoint.
       let params:any = {'client_id': '18203822512-st78qkth7ubu9hf58a3mhp24ljai8k9i.apps.googleusercontent.com',
-                    'redirect_uri': 'http://localhost:4200/',
+                    'redirect_uri': 'https://youtube-angular-clone.netlify.app',
                     'response_type': 'token',
                     'scope': 'https://www.googleapis.com/auth/youtube.force-ssl',
                     'include_granted_scopes': 'true',
