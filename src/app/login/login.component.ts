@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +10,20 @@ import { Component, inject } from '@angular/core';
 })
 export class LoginComponent {
 
+  constructor(private route: ActivatedRoute) { }
+
   email: string = ''; 
   password: string = ''; 
 
   ngOnInit() {
     this.email = '';
     this.password = '';
+
+    this.route.queryParams.subscribe(queryParams => { 
+      console.log(queryParams); // { search: 'value' } 
+      //const search = queryParams['search']; 
+      //console.log(search); // value 
+    });
     
   }
   
@@ -40,7 +49,7 @@ export class LoginComponent {
 
       // Parameters to pass to OAuth 2.0 endpoint.
       let params:any = {'client_id': '18203822512-st78qkth7ubu9hf58a3mhp24ljai8k9i.apps.googleusercontent.com',
-                    'redirect_uri': 'https://youtube-angular-clone.netlify.app',
+                    'redirect_uri': 'https://youtube-angular-clone.netlify.app?',
                     'response_type': 'token',
                     'scope': 'https://www.googleapis.com/auth/youtube.force-ssl',
                     'include_granted_scopes': 'true',
