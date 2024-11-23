@@ -14,16 +14,22 @@ export class LoginComponent {
 
   email: string = ''; 
   password: string = ''; 
+  state: any = ''; 
+  accessToken: any = ''; 
 
   ngOnInit() {
     this.email = '';
     this.password = '';
 
-    this.route.queryParams.subscribe(queryParams => { 
-      console.log(queryParams); // { search: 'value' } 
-      //const search = queryParams['search']; 
-      //console.log(search); // value 
-    });
+    this.route.fragment.subscribe(fragment => { 
+      if (fragment) { 
+        const params = new URLSearchParams(fragment); 
+        this.state = params.get('state'); 
+        this.accessToken = params.get('access_token'); 
+        console.log('State:', this.state); 
+        console.log('Access Token:', this.accessToken);
+       } 
+      });
     
   }
   
