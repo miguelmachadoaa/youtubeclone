@@ -15,9 +15,9 @@ import { VideoComponent } from '../video/video.component';
 export class CanalesComponent {
 
   constructor(
-    private videosService: VideosService,
-    private localStorageService : LocalStorageService,
-    private router: Router) { }
+    private readonly videosService: VideosService,
+    private readonly localStorageService : LocalStorageService,
+    private readonly router: Router) { }
 
     @Input() channelId: any;
 
@@ -38,6 +38,8 @@ export class CanalesComponent {
 
       this.videosService.getChannelInfo(channelId).then(response => {
         this.channel = response.data.items[0];
+
+        console.log(this.channel);
   
         this.localStorageService.setItem('channels', this.channel);
         
@@ -66,6 +68,28 @@ export class CanalesComponent {
         return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
       }
       return num;
+    }
+
+    follow(channelId: string){
+
+      let accessTokenArray = this.localStorageService.getItem("accessToken");
+
+      if(accessTokenArray){
+        let accessToken = accessTokenArray[accessTokenArray?.length -1];
+
+      this.videosService.subscribeToChannel(accessToken, channelId).then(
+        response=>{
+          console.log(response);
+        }
+      ).catch(error=>{
+        console.error(error);
+      })
+      }else{
+        console.log('error 2');
+        console.log(accessTokenArray);
+      }
+
+      
     }
 
 }

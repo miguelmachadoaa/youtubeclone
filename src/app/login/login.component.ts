@@ -1,5 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private readonly localStorageService:LocalStorageService
+  ) { }
 
   email: string = ''; 
   password: string = ''; 
@@ -28,6 +33,8 @@ export class LoginComponent {
         this.accessToken = params.get('access_token'); 
         console.log('State:', this.state); 
         console.log('Access Token:', this.accessToken);
+
+        this.localStorageService.setItem('accessToken', this.accessToken);
        } 
       });
     

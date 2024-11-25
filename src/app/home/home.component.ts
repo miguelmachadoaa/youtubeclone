@@ -41,7 +41,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userProfile = JSON.parse(sessionStorage.getItem("loggedInUser")??"");
+    let loggedInUser = sessionStorage.getItem("loggedInUser");
+
+    if(loggedInUser){
+      this.userProfile = JSON.parse(loggedInUser);
+    }
+
+    console.log(this.userProfile);
+
 
     this.today = this.pipe.transform(new Date(), 'ddMMYYYY');
 
@@ -59,6 +66,16 @@ export class HomeComponent implements OnInit {
     }else{
       this.data = this.data[0];
     }
+
+    let accessTokenArray = this.localStorageService.getItem("accessToken");
+    let accessToken = accessTokenArray[accessTokenArray?.length -1];
+
+
+    this.videosService.getMyChannelInfo(accessToken).then((response: { data: any; }) => {
+      console.log(response);
+    }).catch((error: any) => {
+      console.error(error);
+    });
 
 
     

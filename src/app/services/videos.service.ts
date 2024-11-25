@@ -68,5 +68,32 @@ export class VideosService {
     return data ?? null;
   }
 
+  async subscribeToChannel(accessToken: any, channelId: string) { 
+
+    const headers = { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }; 
+
+    const body = { snippet: { resourceId: { kind: 'youtube#channel', channelId: channelId } } }; 
+    
+    try { 
+      const response = await axios.post('https://www.googleapis.com/youtube/v3/subscriptions?part=snippet', body, { headers }); 
+      
+      console.log('Subscribed successfully:', response.data);
+       return response.data; 
+      
+    } catch (error) { 
+      console.error('Subscription failed:', error); throw error; 
+    } 
+    
+  }
+
+  getMyChannelInfo(accessToken:any){
+
+    const headers = { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }; 
+
+    let url = `${environment.apiBaseUrl}channels?part=snippet,statistics&mine=true&key=${this.apiKey}`;
+    let data = axios.get(url, {headers});
+    return data ?? null;
+  }
+
 
 }
