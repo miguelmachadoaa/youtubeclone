@@ -1,32 +1,34 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
-import { MysqlService } from '../services/mysql.service';
 
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class LoginComponent {
+export class RegisterComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private readonly localStorageService:LocalStorageService,
-    private readonly mysqlService:MysqlService,
+    private readonly localStorageService:LocalStorageService
   ) { }
 
+  name: string = ''; 
   email: string = ''; 
   password: string = ''; 
+  repassword: string = ''; 
   state: any = ''; 
   accessToken: any = ''; 
 
   ngOnInit() {
     this.email = '';
     this.password = '';
+    this.repassword = '';
+    this.name = '';
 
     this.route.fragment.subscribe(fragment => { 
       if (fragment) { 
@@ -35,12 +37,11 @@ export class LoginComponent {
         this.accessToken = params.get('access_token'); 
         console.log('State:', this.state); 
         console.log('Access Token:', this.accessToken);
+
         this.localStorageService.setItem('accessToken', this.accessToken);
+
        } 
       });
-
-    console.log(this.mysqlService.getDataUsers());
-    
     
   }
   
@@ -50,11 +51,12 @@ export class LoginComponent {
     // Aquí puedes añadir la lógica para autenticar al usuario 
   }
 
-  login() { 
+  registrarse() { 
     console.log('Email:', this.email); 
     console.log('Password:', this.password); 
     // Aquí puedes añadir la lógica para autenticar al usuario 
   }
+
 
   singInWithGoogle(){
   }

@@ -19,9 +19,10 @@ export class VideosService {
   getData(){
 
       let data = axios.get(this.apiUrl);
+      
       this.localStorageService.setItem('home', data);
 
-    return data ?? null;
+      return data ?? null;
   }
 
   getDataSearch(term:string){

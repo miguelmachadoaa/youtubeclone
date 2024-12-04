@@ -4,13 +4,14 @@
     <div class="col-sm-4">
         <form (ngSubmit)="onSubmit()">
             
-            <h3 class="text-white text-center mb-4">Inicio session </h3>
+            <h3 class="text-white text-center mb-4">Crea tu cuenta</h3>
 
+            <input type="text" class="mt-2 mb-2 form-control" v-model="name" placeholder="name">
             <input type="text" class="mt-2 mb-2 form-control" v-model="email" placeholder="email">
             <input type="password" class="mt-2 mb-2 form-control" v-model="password" placeholder="password">
+            <input type="password" class="mt-2 mb-2 form-control" v-model="repassword" placeholder="repassword">
 
-            <button (click)="login()" class="btn btn-primary w-100  mb-2 ">Acceder</button>
-
+            <button (click)="registrarse()" class="btn btn-primary w-100  mb-2 ">Registrarse</button>
             
             <div id="g_id_onload"
               data-client_id="18203822512-st78qkth7ubu9hf58a3mhp24ljai8k9i.apps.googleusercontent.com"
@@ -31,10 +32,8 @@
 
           </form>
 
-          <a href="/register" class="btn btn-link w-100 mt-2 text-right">Crear Cuenta </a>
-          <a href="/register" class="btn btn-link w-100  text-right">Olvide mi contrasena </a>
+          <a href="/login" class="btn btn-link w-100 mt-2 text-right">Ingresar </a>
 
-          <!--div class="btn btn-primary mt-4 w-100" (click)="youtubeAuth()" >Accede Con youtube</div-->
           
     </div>
 </div>

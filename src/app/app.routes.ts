@@ -8,6 +8,7 @@ import { HistoryComponent } from './history/history.component';
 import { LoginComponent } from './login/login.component';
 import { CondicionesComponent } from './condiciones/condiciones.component';
 import { PoliticasComponent } from './politicas/politicas.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'likes', component: VideoLikesComponent },
     { path: 'history', component: HistoryComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     { path: 'condiciones', component: CondicionesComponent },
     { path: 'politicas', component: PoliticasComponent },
     { path: 'details/:id', component: VideoDetailsComponent },

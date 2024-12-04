@@ -70,11 +70,11 @@ export class HomeComponent implements OnInit {
     let accessTokenArray = this.localStorageService.getItem("accessToken");
     let accessToken = accessTokenArray[accessTokenArray?.length -1];
 
-   /* this.videosService.getMyChannelInfo(accessToken).then((response: { data: any; }) => {
+   this.videosService.getMyChannelInfo(accessToken).then((response: { data: any; }) => {
       console.log(response);
     }).catch((error: any) => {
       console.error(error);
-    });*/
+    });
 
 
     

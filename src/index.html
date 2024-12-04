@@ -32,7 +32,10 @@
   function handleCredentialResponse(response){
     const responsePayload = decodeJWTToken(response.credential);
     sessionStorage.setItem("loggedInUser", JSON.stringify(responsePayload));
+    sessionStorage.setItem("token", response);
+    localStorage.setItem("token", response);
     console.log(responsePayload);
+    console.log(response);
   }
 </script>
 </html>
