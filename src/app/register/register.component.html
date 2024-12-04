@@ -6,12 +6,12 @@
             
             <h3 class="text-white text-center mb-4">Crea tu cuenta</h3>
 
-            <input type="text" class="mt-2 mb-2 form-control" v-model="name" placeholder="name">
-            <input type="text" class="mt-2 mb-2 form-control" v-model="email" placeholder="email">
-            <input type="password" class="mt-2 mb-2 form-control" v-model="password" placeholder="password">
-            <input type="password" class="mt-2 mb-2 form-control" v-model="repassword" placeholder="repassword">
+            <input type="text" class="mt-2 mb-2 form-control"  [(ngModel)]="name" id="name" name="name" placeholder="name">
+            <input type="text" class="mt-2 mb-2 form-control" [(ngModel)]="email" id="email" name="email" placeholder="email">
+            <input type="password" class="mt-2 mb-2 form-control" [(ngModel)]="password" id="password" name="password" placeholder="password">
+            <input type="password" class="mt-2 mb-2 form-control" [(ngModel)]="repassword" id="repassword" name="repassword" placeholder="repassword">
 
-            <button (click)="registrarse()" class="btn btn-primary w-100  mb-2 ">Registrarse</button>
+            <button (click)="registrarse()" type="button" role="button" class="btn btn-primary w-100  mb-2 ">Registrarse</button>
             
             <div id="g_id_onload"
               data-client_id="18203822512-st78qkth7ubu9hf58a3mhp24ljai8k9i.apps.googleusercontent.com"

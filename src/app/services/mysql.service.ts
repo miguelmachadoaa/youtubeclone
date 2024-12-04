@@ -21,4 +21,12 @@ export class MysqlService {
       return data ?? null;
       
   }
+
+  addUser(data:any){
+
+    let response:any = axios.post(this.apiUrl+'?id=users', {'id':'users', 'payload':data});
+
+    return response ?? null;
+    
+}
 }

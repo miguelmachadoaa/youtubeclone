@@ -3,7 +3,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/rou
 import { VideosService } from './services/videos.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { CommonModule } from '@angular/common'
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -24,9 +24,8 @@ export class AppComponent implements OnInit {
   channels: any = [];
 
   constructor(
-    private videosService: VideosService, 
-    private localStorageService:LocalStorageService,
-    private router: Router
+    private readonly localStorageService:LocalStorageService,
+    private readonly router: Router
 
   ) { }
 

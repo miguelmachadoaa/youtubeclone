@@ -1,8 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
-import { MysqlService } from '../services/mysql.service';
-
 
 @Component({
   selector: 'app-login',
@@ -16,7 +14,6 @@ export class LoginComponent {
   constructor(
     private route: ActivatedRoute,
     private readonly localStorageService:LocalStorageService,
-    private readonly mysqlService:MysqlService,
   ) { }
 
   email: string = ''; 
@@ -38,9 +35,6 @@ export class LoginComponent {
         this.localStorageService.setItem('accessToken', this.accessToken);
        } 
       });
-
-    console.log(this.mysqlService.getDataUsers());
-    
     
   }
   

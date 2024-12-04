@@ -1,20 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
-
+import { FormsModule } from '@angular/forms'
+import { MysqlService } from '../services/mysql.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
   constructor(
-    private route: ActivatedRoute,
-    private readonly localStorageService:LocalStorageService
+    private readonly route: ActivatedRoute,
+    private readonly localStorageService:LocalStorageService,
+    private readonly mysqlService:MysqlService
   ) { }
 
   name: string = ''; 
@@ -25,10 +27,6 @@ export class RegisterComponent {
   accessToken: any = ''; 
 
   ngOnInit() {
-    this.email = '';
-    this.password = '';
-    this.repassword = '';
-    this.name = '';
 
     this.route.fragment.subscribe(fragment => { 
       if (fragment) { 
@@ -53,8 +51,11 @@ export class RegisterComponent {
 
   registrarse() { 
     console.log('Email:', this.email); 
+    console.log('Name:', this.name); 
     console.log('Password:', this.password); 
-    // Aquí puedes añadir la lógica para autenticar al usuario 
+    
+    console.log(this.mysqlService.addUser({'name':this.name, 'email':this.email, 'password':this.password}));
+
   }
 
 
