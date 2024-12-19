@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   title = 'youtube';
 
+  user: any;
   data: any;
   term: any;
   likes: any = [];
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
    
    this.channels = this.localStorageService.getItem('channels');
+   this.user = this.localStorageService.getItem('userLogin');
 
    let hash:any = {};
 

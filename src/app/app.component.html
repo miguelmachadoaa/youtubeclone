@@ -46,14 +46,25 @@
             </ul>
           </li>
 
-          <li class="nav-item">
+         
+
+
+        </ul>
+
+        <ul class="navbar-nav ms-auto"> 
+          <li class="nav-item" *ngIf="!user.token">
             <a class="nav-link active" aria-current="page" href="/login">
-              <img class="menu-icon " src="assets/history.png" alt="">
+              <img class="menu-icon p-0 m-0 " width="20px" src="assets/login.png" alt="">
               <span class="ms-1 text-white  mr-2">Login</span>
             </a>
           </li>
 
-
+          <li class="nav-item" *ngIf="user.token">
+            <a class="nav-link active" aria-current="page" href="/perfil">
+              <img class="menu-icon p-0 m-0 " width="20px" src="assets/user.png" alt="">
+              <span class="ms-1 text-white  mr-2">{{user.first_name+' '+user.last_name}}</span>
+            </a>
+          </li>
         </ul>
         
       </div>

@@ -1,21 +1,29 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';  
+
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { MysqlService } from '../services/mysql.service';
+import { FormsModule } from '@angular/forms'
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private readonly localStorageService:LocalStorageService,
+    private readonly mysqlService:MysqlService,
   ) { }
 
+  errorLogin: boolean = false; 
   email: string = ''; 
   password: string = ''; 
   state: any = ''; 
@@ -44,9 +52,26 @@ export class LoginComponent {
     // Aquí puedes añadir la lógica para autenticar al usuario 
   }
 
-  login() { 
-    console.log('Email:', this.email); 
-    console.log('Password:', this.password); 
+  async login() { 
+    this.errorLogin = false;
+
+    let  userLogin = await  this.mysqlService.login({'email':this.email, 'password':this.password});
+
+    console.log(userLogin);
+
+    if(userLogin.data.token){
+
+      this.localStorageService.setItemOnly('userLogin', userLogin.data);
+
+      this.router.navigate(['/home'], { relativeTo: this.route });
+
+    }else{
+
+      this.errorLogin = true;
+      
+    }
+
+
     // Aquí puedes añadir la lógica para autenticar al usuario 
   }
 

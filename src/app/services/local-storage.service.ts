@@ -19,6 +19,10 @@ export class LocalStorageService {
     localStorage.setItem(key, JSON.stringify(items));
   }
 
+  setItemOnly(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
   removeItem(key: string, i: any) {
     var  items:any  = localStorage.getItem(key);
     items = JSON.parse(items);

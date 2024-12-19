@@ -28,5 +28,13 @@ export class MysqlService {
 
     return response ?? null;
     
-}
+  }
+
+  async login(data:any){
+
+    let response:any = await axios.post(this.apiUrl+'?id=login', {'id':'login', 'payload':data});
+
+    return response ?? null;
+    
+  }
 }
