@@ -91,6 +91,8 @@ export class VideosService {
 
     const headers = { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }; 
 
+    console.log(headers);
+
     let url = `${environment.apiBaseUrl}channels?part=snippet,statistics&mine=true&key=${this.apiKey}`;
     let data = axios.get(url, {headers});
     return data ?? null;

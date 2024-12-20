@@ -31,6 +31,7 @@ export class PerfilComponent {
   state: any = ''; 
   accessToken: any = ''; 
   user: any = ''; 
+  channels: any = ''; 
 
   ngOnInit() {
     this.email = '';
@@ -55,6 +56,9 @@ export class PerfilComponent {
       let accessToken = accessTokenArray[accessTokenArray?.length -1];
       this.videosService.getMyChannelInfo(accessToken).then((response: { data: any; }) => {
         console.log(response);
+        this.channels = response.data.items;
+        console.log(this.channels);
+
       }).catch((error: any) => {
         console.error(error);
       });
