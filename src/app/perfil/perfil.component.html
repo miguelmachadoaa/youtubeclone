@@ -1,0 +1,32 @@
+
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 ">
+        <div class="row ">
+            <div class="col-sm-12 text-center text-white">
+                <img src="{{user.pic}}" alt="User Profile Image" class="img-fluid rounded-circle">
+                <h2>{{user.first_name}}</h2>
+                <p>{{user.bio}}</p>
+            </div>
+            <div class="col-sm-12">
+                <div class="btn btn-primary mt-4 w-100" (click)="youtubeAuth()" >Vincular Canal de Youtube</div>
+            </div>
+
+            <div class="col-sm-12">
+            <div *ngIf="user.youtubeChannels && user.youtubeChannels.length > 0">
+                <h3>Canales de Youtube</h3>
+                <ul class="list-group">
+                    <li *ngFor="let channel of user.youtubeChannels" class="list-group-item">
+                        <img [src]="channel.thumbnail" alt="Channel Thumbnail" class="img-thumbnail" width="50">
+                        <span>{{ channel.name }}</span>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+       
+    </div>
+          
+</div>
+
+
