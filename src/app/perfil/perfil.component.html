@@ -16,9 +16,12 @@
             <div *ngIf="user.youtubeChannels && user.youtubeChannels.length > 0">
                 <h3>Canales de Youtube</h3>
                 <ul class="list-group">
-                    <li *ngFor="let channel of user.youtubeChannels" class="list-group-item">
-                        <img [src]="channel.thumbnail" alt="Channel Thumbnail" class="img-thumbnail" width="50">
-                        <span>{{ channel.name }}</span>
+                    <li *ngFor="let channel of channels" class="list-group-item">
+                        <img [src]="channel.thumbnail.default.url" alt="Channel Thumbnail" class="img-thumbnail" width="50">
+                        <span>Title: {{ channel.snippet.title }}</span>
+                        <span>Description: {{ channel.snippet.description }}</span>
+                        <span>Suscribers: {{ channel.statistics.subscriberCount }}</span>
+                        <span>Videos: {{ channel.statistics.videoCount }}</span>
                     </li>
                 </ul>
             </div>
