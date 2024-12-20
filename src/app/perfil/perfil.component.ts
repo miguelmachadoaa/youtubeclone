@@ -6,8 +6,6 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { VideosService } from '../services/videos.service';
 import { MysqlService } from '../services/mysql.service';
 import { FormsModule } from '@angular/forms'
-
-
 @Component({
   selector: 'app-perfil',
   standalone: true,
@@ -36,14 +34,13 @@ export class PerfilComponent {
   ngOnInit() {
     this.email = '';
     this.password = '';
+    this.channels = '';
 
     this.route.fragment.subscribe(fragment => { 
       if (fragment) { 
         const params = new URLSearchParams(fragment); 
         this.state = params.get('state'); 
         this.accessToken = params.get('access_token'); 
-        console.log('State:', this.state); 
-        console.log('Access Token:', this.accessToken);
         this.localStorageService.setItem('accessToken', this.accessToken);
        } 
       });
@@ -51,7 +48,7 @@ export class PerfilComponent {
     this.user = this.localStorageService.getItem('userLogin');
 
     let accessTokenArray = this.localStorageService.getItem("accessToken");
-    console.log(accessTokenArray);
+
     if(accessTokenArray){
       let accessToken = accessTokenArray[accessTokenArray?.length -1];
       this.videosService.getMyChannelInfo(accessToken).then((response: { data: any; }) => {

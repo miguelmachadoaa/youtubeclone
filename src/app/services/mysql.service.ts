@@ -37,4 +37,14 @@ export class MysqlService {
     return response ?? null;
     
   }
+
+  async addChannel(data:any){
+
+    let user = this.localStorageService.getItem('userLogin');
+
+    let response:any = await axios.post(this.apiUrl+'?id=youtube_channel', {'id':'youtube_channel', 'token':user.token, 'payload':data});
+
+    return response ?? null;
+    
+  }
 }
