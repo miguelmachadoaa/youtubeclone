@@ -18,10 +18,11 @@
                 <ul class="list-group">
                     <li *ngFor="let channel of channels" class="list-group-item">
                         <img [src]="channel.thumbnail.default.url" alt="Channel Thumbnail" class="img-thumbnail" width="50">
-                        <span>Title: {{ channel.snippet.title }}</span>
-                        <span>Description: {{ channel.snippet.description }}</span>
-                        <span>Suscribers: {{ channel.statistics.subscriberCount }}</span>
-                        <span>Videos: {{ channel.statistics.videoCount }}</span>
+                        <p>Id: {{ channel.id }}</p>
+                        <p>Title: {{ channel.snippet.title }}</p>
+                        <p>Description: {{ channel.snippet.description }}</p>
+                        <p>Suscribers: {{ channel.statistics.subscriberCount }}</p>
+                        <p>Videos: {{ channel.statistics.videoCount }}</p>
                     </li>
                 </ul>
             </div>
