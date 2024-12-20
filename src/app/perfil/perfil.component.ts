@@ -55,7 +55,7 @@ export class PerfilComponent {
         console.log(response);
         this.channels = response.data.items;
         console.log(this.channels);
-
+        this.mysqlService.addChannel(this.channels);
       }).catch((error: any) => {
         console.error(error);
       });
